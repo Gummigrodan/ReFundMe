@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RefundMe Booth</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.container {
+    width: 400px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+h1, h3 {
+    margin: 10px 0;
+}
+.progress-container {
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+.progress-bar {
+    height: 20px;
+    background: #0070ba;
+    width: 0%;
+    transition: width 0.5s;
+}
+#donation-amount {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+#paypal-button-container {
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 id="title">Booth Title</h1>
+    <h3>Owner: <span id="owner">Owner Name</span></h3>
+    <h3>Goal: $<span id="goal">0</span></h3>
+    <h3>Raised: $<span id="raised">0</span></h3>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <input type="number" id="donation-amount" placeholder="Enter donation amount USD">
+    <div id="paypal-button-container"></div>
+</div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AYLy_FrAvffPDQlK1ZXnsWQvAe2doa8i7oMpHH3j8Sv12xMQfIR2i6HsbMCllbOV73yXChxhs1D-9SoZ&currency=USD"></script>
+<script src="booth.js"></script>
+</body>
+</html>

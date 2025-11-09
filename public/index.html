@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RefundMe</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+input, button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button {
+    background: #0070ba;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background: #005c99;
+}
+.booth {
+    padding: 12px;
+    margin: 10px 0;
+    background: #e6f0fa;
+    border-radius: 6px;
+}
+.booth a {
+    text-decoration: none;
+    color: #0070ba;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Create a Booth</h1>
+    <input type="text" id="title" placeholder="Booth Title">
+    <input type="text" id="owner" placeholder="Your Name">
+    <input type="number" id="goal" placeholder="Goal Amount USD">
+    <input type="email" id="paypalEmail" placeholder="Your PayPal Email">
+    <button id="createBooth">Create Booth</button>
+
+    <h2>Existing Booths</h2>
+    <div id="booths"></div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
