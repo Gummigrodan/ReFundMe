@@ -4,20 +4,25 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const PORT = process.env.PORT || 3000;
+const app = express(); // Skapar Express-app
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// ---- Middleware ----
+app.use(cors());
+app.use(bodyParser.json());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "public"))); // din front-end
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+// ---- In-memory storage ----
+let booths = []; // Temporärt, kan bytas mot DB senare
 
-let booths = []; // In-memory storage for booths
+// ---- Routes ----
+
+// Home page
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 // Get all booths
 app.get("/booths", (req, res) => {
@@ -42,7 +47,7 @@ app.get("/booths/:id", (req, res) => {
     res.json(booth);
 });
 
-// Update raised amount
+// Update raised amount (donate)
 app.post("/booths/:id/donate", (req, res) => {
     const booth = booths[req.params.id];
     if (!booth) return res.status(404).json({ error: "Booth not found." });
@@ -52,9 +57,6 @@ app.post("/booths/:id/donate", (req, res) => {
     res.json(booth);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
-
-
-
+// ---- Start server ----
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
